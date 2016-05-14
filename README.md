@@ -1,19 +1,22 @@
 # Nestedset plugin for Grails 3.x
+
+[![Build Status](https://travis-ci.org/bhagwat/nestedset.svg?branch=master)](https://travis-ci.org/bhagwat/nestedset)
+
 Grails Nestedset plugin implements Nested Set data structure to store trees in a database.
 
 The plugin is a rewrite of a old Grails 1.x plugin.
 
-# Usage guideline
+## Installation
 
-## Add dependency in build.gradle
+Add dependency in build.gradle
 
-```
+```groovy
 compile "com.ttnd.plugins:nestedset:0.1"
 ```
 
-## Create domain class which implements NestedSetMarker traits
+### Create domain class which implements NestedSetMarker traits
 
-```
+```groovy
 package com.ttnd.demo.nestedset
 
 import com.ttnd.plugins.util.NestedSetMarker
@@ -32,7 +35,8 @@ class ProductCategory implements NestedSetMarker<ProductCategory> {
 ```
 
 ## Bootstrap Nested set
-```
+
+```groovy
         ProductCategory root = new ProductCategory("root").save()
         ProductCategory child1 = new ProductCategory("Child 1").save()
         ProductCategory child2 = new ProductCategory("Child 2").save()
