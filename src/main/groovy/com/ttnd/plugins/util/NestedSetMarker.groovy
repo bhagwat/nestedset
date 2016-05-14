@@ -4,7 +4,7 @@ import com.ttnd.plugins.NestedSet
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
-trait NestedSetMarker<T> {
+trait NestedSetMarker<T> implements Identifier{
     static Log log = LogFactory.getLog(NestedSetMarker.class)
 
     abstract Long getId()
@@ -107,14 +107,14 @@ trait NestedSetMarker<T> {
             if (clazz != childClazz) {
                 throw new RuntimeException("Incompatible classes for nestedset: ${clazz.name}, ${childClazz.name}")
             }
-            if (!c.hasProperty('nestedSetCheckMembershipBeforeAdding') || c.nestedSetCheckMembershipBeforeAdding) {
+            if (!c.hasProperty('nestedSetCheckMembershipBeforeAdding')) {
                 def childNode = NestedSet.findNode(setId, c)
                 if (childNode != null) {
                     throw new RuntimeException("Object already in the nestedset: ${c.nestedSetToString()}")
                 }
             }
         }
-        def className = clazz.name
+        String className = clazz.name
         Long lft
         if (position == 0) {
             lft = node.lft + 1
