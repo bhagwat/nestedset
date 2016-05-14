@@ -37,21 +37,21 @@ class ProductCategory implements NestedSetMarker<ProductCategory> {
 ## Bootstrap Nested set
 
 ```groovy
-        ProductCategory root = new ProductCategory("root").save()
-        ProductCategory child1 = new ProductCategory("Child 1").save()
-        ProductCategory child2 = new ProductCategory("Child 2").save()
-        ProductCategory child11 = new ProductCategory("Child 1.1").save()
-        ProductCategory child12 = new ProductCategory("Child 1.2").save()
-        ProductCategory child21 = new ProductCategory("Child 2.1").save()
+ProductCategory root = new ProductCategory("root").save()
+ProductCategory child1 = new ProductCategory("Child 1").save()
+ProductCategory child2 = new ProductCategory("Child 2").save()
+ProductCategory child11 = new ProductCategory("Child 1.1").save()
+ProductCategory child12 = new ProductCategory("Child 1.2").save()
+ProductCategory child21 = new ProductCategory("Child 2.1").save()
 
-        root.nestedSetMakeRoot()
-        root.nestedSetAddChild(child1)
-        root.nestedSetAddChild(child2)
+root.nestedSetMakeRoot()
+root.nestedSetAddChild(child1)
+root.nestedSetAddChild(child2)
 
-        child1.nestedSetAddChild(child11)
-        child1.nestedSetAddChild(child12)
+child1.nestedSetAddChild(child11)
+child1.nestedSetAddChild(child12)
 
-        child2.nestedSetAddChild(child21)
+child2.nestedSetAddChild(child21)
 
 ```
 
